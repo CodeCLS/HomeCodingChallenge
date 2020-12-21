@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/imageMoreInfo"
+        android:layout_width="match_parent"
+        android:layout_height="300dp" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/nameMoreInfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:layout_margin="5dp"
+            android:gravity="center"
+            android:text="Tester" />
+        <TextView
+            android:id="@+id/descriptionMoreInfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:textSize="16sp"
+            android:gravity="center"
+            android:text="Tester" />
+        <TextView
+            android:id="@+id/instructionsMoreInfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+
+            android:textSize="16sp"
+            android:gravity="center"
+            android:text="Tester" />
+        <TextView
+            android:id="@+id/categoryMoreInfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:layout_margin="5dp"
+
+            android:gravity="center"
+            android:text="Tester" />
+        <TextView
+            android:id="@+id/alcoholMoreInfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:layout_margin="5dp"
+            android:gravity="center"
+            android:text="Tester" />
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:id="@+id/tagsMoreInfo"
+            android:layout_margin="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_margin="5dp"
+            android:id="@+id/ingredientsMoreInfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+
+
+    </LinearLayout>
+
+</LinearLayout>
