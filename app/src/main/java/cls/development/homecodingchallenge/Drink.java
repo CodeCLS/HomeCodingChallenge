@@ -1,26 +1,27 @@
 package cls.development.homecodingchallenge;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 public class Drink {
     private String name;
     private String imageUri;
     private String id;
-    private String description;
     private String category;
-    private boolean isAlcohol;
+    private String isAlcohol;
     private String instructions;
-    private ArrayList<String> tags;
-    private ArrayList<String> ingredients;
+    private List<String> tags;
+    private HashMap<String,String> ingredients;
 
-    public Drink(String name, String imageUri, String id, String description, String category, boolean isAlcohol, String instructions, ArrayList<String> tags, ArrayList<String> ingredients) {
+
+    public Drink(String name, String imageUri, String id, String category,String isAlcohol, String instructions, List<String> tags, HashMap<String,String> ingredients) {
         this.name = name;
         this.imageUri = imageUri;
         this.id = id;
-        this.description = description;
         this.category = category;
-        this.isAlcohol = isAlcohol;
         this.instructions = instructions;
+        this.isAlcohol = isAlcohol;
         this.tags = tags;
         this.ingredients = ingredients;
     }
@@ -33,6 +34,14 @@ public class Drink {
 
     public String getName() {
         return name;
+    }
+
+    public String getIsAlcohol() {
+        return isAlcohol;
+    }
+
+    public void setIsAlcohol(String isAlcohol) {
+        this.isAlcohol = isAlcohol;
     }
 
     public void setName(String name) {
@@ -55,14 +64,6 @@ public class Drink {
         this.id = id;
     }
 
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
     public String getCategory() {
         return category;
     }
@@ -71,13 +72,7 @@ public class Drink {
         this.category = category;
     }
 
-    public boolean isAlcohol() {
-        return isAlcohol;
-    }
 
-    public void setAlcohol(boolean alcohol) {
-        isAlcohol = alcohol;
-    }
 
     public String getInstructions() {
         return instructions;
@@ -87,19 +82,19 @@ public class Drink {
         this.instructions = instructions;
     }
 
-    public ArrayList<String> getTags() {
+    public List<String> getTags() {
         return tags;
     }
 
-    public void setTags(ArrayList<String> tags) {
+    public void setTags(List<String> tags) {
         this.tags = tags;
     }
 
-    public ArrayList<String> getIngredients() {
+    public HashMap<String, String> getIngredients() {
         return ingredients;
     }
 
-    public void setIngredients(ArrayList<String> ingredients) {
+    public void setIngredients(HashMap<String, String> ingredients) {
         this.ingredients = ingredients;
     }
 }

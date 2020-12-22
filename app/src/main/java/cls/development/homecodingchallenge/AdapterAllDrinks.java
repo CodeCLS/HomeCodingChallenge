@@ -1,6 +1,7 @@
 package cls.development.homecodingchallenge;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,19 +17,17 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 
 public class AdapterAllDrinks extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
-    private View.OnClickListener listener;
+    private DrinksFragment allDrinksFragment;
     private ArrayList<Drink> drinkArrayList = new ArrayList<Drink>();
     private Context context;
-    private static String idCurrentItem;
+    private String idCurrentItem;
 
-    public AdapterAllDrinks(ArrayList<Drink> drinkArrayList, View.OnClickListener listener) {
+    public AdapterAllDrinks(ArrayList<Drink> drinkArrayList, DrinksFragment allDrinksFragment) {
         this.drinkArrayList = drinkArrayList;
-        this.listener = listener;
+        this.allDrinksFragment = allDrinksFragment;
     }
 
-    public AdapterAllDrinks(ArrayList<Drink> drinkArrayList) {
-        this.drinkArrayList = drinkArrayList;
-    }
+
 
     @NonNull
     @Override
@@ -42,19 +41,21 @@ public class AdapterAllDrinks extends RecyclerView.Adapter<RecyclerView.ViewHold
         ViewHolder viewHolder = (ViewHolder) holder;
         viewHolder.textView.setText(drinkArrayList.get(position).getName());
         Picasso.get().load(drinkArrayList.get(position).getImageUri()).into(viewHolder.imageView);
-        idCurrentItem = drinkArrayList.get(position).getId();
-        viewHolder.container.setOnClickListener(listener);
+        viewHolder.container.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                idCurrentItem = drinkArrayList.get(position).getId();
+                Log.d("AdapterClick", "onClick12: " + idCurrentItem);
+                allDrinksFragment.itemClicked(idCurrentItem);
+            }
+        });
 
 
 
 
     }
-    public void setListener(View.OnClickListener listener){
-        this.listener = listener;
-    }
-    public String getIdCurrentItem(){
-        return idCurrentItem;
-    }
+
+
 
     @Override
     public int getItemCount() {
