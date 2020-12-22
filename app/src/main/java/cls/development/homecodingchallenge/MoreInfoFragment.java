@@ -24,7 +24,6 @@ public class MoreInfoFragment extends Fragment implements DataCollected {
     private TextView category;
     private TextView isAlcohol;
     private TextView instructions;
-    private LinearLayout tags;
     private LinearLayout ingredients;
 
 
@@ -48,7 +47,6 @@ public class MoreInfoFragment extends Fragment implements DataCollected {
             category = getView().findViewById(R.id.categoryMoreInfo);
             instructions = getView().findViewById(R.id.instructionsMoreInfo);
             isAlcohol = getView().findViewById(R.id.alcoholMoreInfo);
-            tags = getView().findViewById(R.id.tagsMoreInfo);
             ingredients = getView().findViewById(R.id.ingredientsMoreInfo);
         }
         catch (Exception e){
@@ -68,12 +66,16 @@ public class MoreInfoFragment extends Fragment implements DataCollected {
 
     @Override
     public void dataCollected(ArrayList<Drink> array) {
-            Drink drink = array.get(0);
-            name.setText(drink.getName());
-            Picasso.get().load(drink.getImageUri()).into(image);
-            category.setText(drink.getCategory());
-            isAlcohol.setText(drink.getIsAlcohol());
-            instructions.setText(drink.getInstructions());
+        Drink drink = array.get(0);
+        name.setText(drink.getName());
+        Picasso.get().load(drink.getImageUri()).into(image);
+        category.setText(drink.getCategory());
+        isAlcohol.setText(drink.getIsAlcohol());
+        instructions.setText(drink.getInstructions());
+
+        for(int i = 0;i<drink.getIngredients().size();i++){
+            ingredients.addView(new MoreInfoListItem(getContext(), drink.getIngredients().keyAt(i)+ " : " +drink.getIngredients().get(drink.getIngredients().keyAt(i))));
+        }
 
 
     }

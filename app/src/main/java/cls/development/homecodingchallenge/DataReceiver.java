@@ -1,6 +1,7 @@
 package cls.development.homecodingchallenge;
 
 import android.content.Context;
+import android.util.ArrayMap;
 import android.util.Log;
 
 import com.android.volley.RequestQueue;
@@ -14,9 +15,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
 
 public class DataReceiver {
     private static String responseAllOrdinaryDrinks;
@@ -109,15 +107,14 @@ public class DataReceiver {
         try {
             JSONObject object = new JSONObject(responseValue);
             JSONArray drinksArray = object.getJSONArray("drinks");
-            HashMap<String, String> ingredients = getIngredientHashMap(drinksArray);
-            List<String> tags = Arrays.asList(drinksArray.getJSONObject(c).getString("strTags").split(","));
+            ArrayMap<String, String> ingredients = getIngredientArrayMap(drinksArray);
+
             Drink drink = new Drink(drinksArray.getJSONObject(c).getString("strDrink"),
                     drinksArray.getJSONObject(c).getString("strDrinkThumb"),
                     drinksArray.getJSONObject(c).getString("idDrink"),
                     drinksArray.getJSONObject(c).getString("strCategory"),
                     drinksArray.getJSONObject(c).getString("strInstructions"),
                     drinksArray.getJSONObject(c).getString("strAlcoholic"),
-                    tags,
                     ingredients
             );
 
@@ -131,14 +128,17 @@ public class DataReceiver {
 
         }    }
 
-    private HashMap<String, String> getIngredientHashMap(JSONArray drinksArray) {
-        HashMap<String,String> ingredients = new HashMap<>();
-        for(int i = 0;i< 15;i++ ){
+    private ArrayMap<String, String> getIngredientArrayMap(JSONArray drinksArray) {
+        ArrayMap<String,String> ingredients = new ArrayMap<>();
+        for(int i = 1;i< 15;i++ ){
             String valueIngredient = "";
             String valueAmount = "";
 
             try {
                 valueIngredient = drinksArray.getJSONObject(c).getString("strIngredient" + i);
+                if(valueIngredient.equals("null")){
+                    break;
+                }
             }
             catch (Exception e){
                 break;
@@ -146,6 +146,9 @@ public class DataReceiver {
             }
             try {
                 valueAmount = drinksArray.getJSONObject(c).getString("strMeasure" + i);
+                if(valueAmount.equals("null"))
+                    valueAmount = "/";
+
             }catch (Exception e){
                 Log.e("ExceptionParsingJson", "getJSONDataFromId: ",e );
 

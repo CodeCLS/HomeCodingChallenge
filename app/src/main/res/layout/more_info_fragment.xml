@@ -48,20 +48,17 @@
             android:gravity="center"
             android:text="Tester" />
 
-        <LinearLayout
-            android:orientation="horizontal"
-            android:id="@+id/tagsMoreInfo"
-            android:layout_margin="5dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+        <HorizontalScrollView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
         <LinearLayout
             android:orientation="horizontal"
             android:layout_margin="5dp"
             android:id="@+id/ingredientsMoreInfo"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
-
+        </HorizontalScrollView>
 
     </LinearLayout>
 

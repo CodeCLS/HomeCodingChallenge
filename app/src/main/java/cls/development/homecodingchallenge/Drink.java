@@ -1,5 +1,7 @@
 package cls.development.homecodingchallenge;
 
+import android.util.ArrayMap;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -11,18 +13,16 @@ public class Drink {
     private String category;
     private String isAlcohol;
     private String instructions;
-    private List<String> tags;
-    private HashMap<String,String> ingredients;
+    private ArrayMap<String,String> ingredients;
 
 
-    public Drink(String name, String imageUri, String id, String category,String isAlcohol, String instructions, List<String> tags, HashMap<String,String> ingredients) {
+    public Drink(String name, String imageUri, String id, String category,String isAlcohol, String instructions,  ArrayMap<String,String> ingredients) {
         this.name = name;
         this.imageUri = imageUri;
         this.id = id;
         this.category = category;
         this.instructions = instructions;
         this.isAlcohol = isAlcohol;
-        this.tags = tags;
         this.ingredients = ingredients;
     }
 
@@ -82,19 +82,13 @@ public class Drink {
         this.instructions = instructions;
     }
 
-    public List<String> getTags() {
-        return tags;
-    }
 
-    public void setTags(List<String> tags) {
-        this.tags = tags;
-    }
 
-    public HashMap<String, String> getIngredients() {
+    public ArrayMap<String, String> getIngredients() {
         return ingredients;
     }
 
-    public void setIngredients(HashMap<String, String> ingredients) {
+    public void setIngredients(ArrayMap<String, String> ingredients) {
         this.ingredients = ingredients;
     }
 }
