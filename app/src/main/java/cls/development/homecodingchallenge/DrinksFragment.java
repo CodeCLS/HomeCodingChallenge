@@ -4,10 +4,14 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.view.ViewCompat;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -43,12 +47,15 @@ public class DrinksFragment extends Fragment implements DataCollected,ItemClicke
     }
 
     @Override
-    public void itemClicked(String id) {
+    public void itemClicked(String id, ImageView imageView) {
         MoreInfoFragment moreInfoFragment = new MoreInfoFragment();
         moreInfoFragment.setId(id);
-        MainActivity main = (MainActivity) getActivity();
-        if (main != null) {
-            main.goToFragment(moreInfoFragment);
-        }
+        FragmentManager fragmentManager = getFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        ViewCompat.setTransitionName(imageView, "image_more_transition");
+        fragmentTransaction.addSharedElement(imageView, "image_more_transition");
+        fragmentTransaction.addToBackStack("Info");
+        fragmentTransaction.replace(R.id.frameMain, moreInfoFragment);
+        fragmentTransaction.commit();
     }
 }

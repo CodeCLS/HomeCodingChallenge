@@ -5,9 +5,12 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.transition.Fade;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "Main";
@@ -22,19 +25,14 @@ public class MainActivity extends AppCompatActivity {
 
     void goToFragment(Fragment fragment){
 
-        try {
 
-            FragmentManager fragmentManager = getSupportFragmentManager();
-            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-            if (fragment instanceof MoreInfoFragment)
-                fragmentTransaction.addToBackStack("Info");
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.add(R.id.frameMain, fragment);
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.commit();
 
-            fragmentTransaction.replace(R.id.frameMain, fragment);
-            fragmentTransaction.commit();
-        }
-        catch (Exception e){
-            Log.e(TAG, "goToFragment: ",e );
-        }
+
 
     }
 }

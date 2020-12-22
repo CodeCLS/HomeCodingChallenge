@@ -11,7 +11,10 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.view.ViewCompat;
 import androidx.fragment.app.Fragment;
+import androidx.transition.Transition;
+import androidx.transition.TransitionInflater;
 
 import com.squareup.picasso.Picasso;
 
@@ -20,7 +23,7 @@ import java.util.ArrayList;
 public class MoreInfoFragment extends Fragment implements DataCollected {
     private String id;
     private TextView name;
-    private ImageView image;
+    public ImageView image;
     private TextView category;
     private TextView isAlcohol;
     private TextView instructions;
@@ -40,14 +43,26 @@ public class MoreInfoFragment extends Fragment implements DataCollected {
 
     }
 
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        Transition transition = TransitionInflater.from(requireContext())
+                .inflateTransition(R.transition.shared_image);
+        setSharedElementEnterTransition(transition);
+
+
+    }
+
     private void init() {
         try {
             name = getView().findViewById(R.id.nameMoreInfo);
-            image = getView().findViewById(R.id.imageMoreInfo);
+            image = getView().findViewById(R.id.drink_item_image);
             category = getView().findViewById(R.id.categoryMoreInfo);
             instructions = getView().findViewById(R.id.instructionsMoreInfo);
             isAlcohol = getView().findViewById(R.id.alcoholMoreInfo);
             ingredients = getView().findViewById(R.id.ingredientsMoreInfo);
+            ViewCompat.setTransitionName(image, "image_more_transition");
+
         }
         catch (Exception e){
             Log.d("aiosd", "init: " +e);

@@ -46,7 +46,7 @@ public class AdapterAllDrinks extends RecyclerView.Adapter<RecyclerView.ViewHold
             public void onClick(View v) {
                 idCurrentItem = drinkArrayList.get(position).getId();
                 Log.d("AdapterClick", "onClick12: " + idCurrentItem);
-                allDrinksFragment.itemClicked(idCurrentItem);
+                allDrinksFragment.itemClicked(idCurrentItem,viewHolder.imageView);
             }
         });
 

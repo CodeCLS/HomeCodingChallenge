@@ -4,7 +4,7 @@
     android:layout_height="match_parent">
 
     <ImageView
-        android:id="@+id/imageMoreInfo"
+        android:id="@+id/drink_item_image"
         android:layout_width="match_parent"
         android:layout_height="300dp" />
     <LinearLayout
@@ -42,6 +42,7 @@
         <TextView
             android:id="@+id/alcoholMoreInfo"
             android:layout_width="match_parent"
+            android:textAlignment="viewStart"
             android:layout_height="wrap_content"
             android:textSize="16sp"
             android:layout_margin="5dp"
