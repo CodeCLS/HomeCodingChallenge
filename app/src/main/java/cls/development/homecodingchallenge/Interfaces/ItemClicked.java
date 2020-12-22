@@ -1,4 +1,4 @@
-package cls.development.homecodingchallenge;
+package cls.development.homecodingchallenge.Interfaces;
 
 import android.widget.ImageView;
 

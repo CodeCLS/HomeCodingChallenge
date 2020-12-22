@@ -1,11 +1,10 @@
-package cls.development.homecodingchallenge;
+package cls.development.homecodingchallenge.Fragments;
 
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -13,12 +12,17 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.view.ViewCompat;
 import androidx.fragment.app.Fragment;
-import androidx.transition.Transition;
-import androidx.transition.TransitionInflater;
 
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+import java.util.Objects;
+
+import cls.development.homecodingchallenge.Interfaces.DataCollected;
+import cls.development.homecodingchallenge.Data.DataReceiver;
+import cls.development.homecodingchallenge.Data.Drink;
+import cls.development.homecodingchallenge.CompoundViews.MoreInfoListItem;
+import cls.development.homecodingchallenge.R;
 
 public class MoreInfoFragment extends Fragment implements DataCollected {
     private String id;
@@ -52,7 +56,7 @@ public class MoreInfoFragment extends Fragment implements DataCollected {
 
     private void init() {
         try {
-            name = getView().findViewById(R.id.nameMoreInfo);
+            name = Objects.requireNonNull(getView()).findViewById(R.id.nameMoreInfo);
             image = getView().findViewById(R.id.drink_item_image);
             category = getView().findViewById(R.id.categoryMoreInfo);
             instructions = getView().findViewById(R.id.instructionsMoreInfo);
@@ -62,7 +66,7 @@ public class MoreInfoFragment extends Fragment implements DataCollected {
 
         }
         catch (Exception e){
-            Log.d("aiosd", "init: " +e);
+            Log.d("Exception Views", "ViewError: " +e);
         }
         fetchData();
 
@@ -79,6 +83,12 @@ public class MoreInfoFragment extends Fragment implements DataCollected {
     @Override
     public void dataCollected(ArrayList<Drink> array) {
         Drink drink = array.get(0);
+        assigningViews(drink);
+
+
+    }
+
+    private void assigningViews(Drink drink) {
         name.setText(drink.getName());
         Picasso.get().load(drink.getImageUri()).into(image);
         category.setText(drink.getCategory());
@@ -88,7 +98,5 @@ public class MoreInfoFragment extends Fragment implements DataCollected {
         for(int i = 0;i<drink.getIngredients().size();i++){
             ingredients.addView(new MoreInfoListItem(getContext(), drink.getIngredients().keyAt(i)+ " : " +drink.getIngredients().get(drink.getIngredients().keyAt(i))));
         }
-
-
     }
 }

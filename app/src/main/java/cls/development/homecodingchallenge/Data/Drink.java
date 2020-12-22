@@ -1,4 +1,4 @@
-package cls.development.homecodingchallenge;
+package cls.development.homecodingchallenge.Data;
 
 import android.util.ArrayMap;
 
@@ -40,20 +40,8 @@ public class Drink {
         return isAlcohol;
     }
 
-    public void setIsAlcohol(String isAlcohol) {
-        this.isAlcohol = isAlcohol;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public String getImageUri() {
         return imageUri;
-    }
-
-    public void setImageUri(String imageUri) {
-        this.imageUri = imageUri;
     }
 
     public String getId() {
@@ -68,27 +56,14 @@ public class Drink {
         return category;
     }
 
-    public void setCategory(String category) {
-        this.category = category;
-    }
-
-
 
     public String getInstructions() {
         return instructions;
     }
-
-    public void setInstructions(String instructions) {
-        this.instructions = instructions;
-    }
-
 
 
     public ArrayMap<String, String> getIngredients() {
         return ingredients;
     }
 
-    public void setIngredients(ArrayMap<String, String> ingredients) {
-        this.ingredients = ingredients;
-    }
 }

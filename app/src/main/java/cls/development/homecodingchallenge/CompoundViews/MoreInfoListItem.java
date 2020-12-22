@@ -1,4 +1,4 @@
-package cls.development.homecodingchallenge;
+package cls.development.homecodingchallenge.CompoundViews;
 
 import android.content.Context;
 import android.util.AttributeSet;
@@ -7,8 +7,9 @@ import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 
+import cls.development.homecodingchallenge.R;
+
 public class MoreInfoListItem extends LinearLayout {
-    private TextView textView;
     private String text;
     public MoreInfoListItem(Context context, String s) {
         super(context);
@@ -28,15 +29,11 @@ public class MoreInfoListItem extends LinearLayout {
 
     }
 
-    public MoreInfoListItem(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
-        super(context, attrs, defStyleAttr, defStyleRes);
-        init();
 
-    }
     void init(){
-        inflate(getContext(),R.layout.more_info_item,this);
-        textView = findViewById(R.id.text_more_info_item);
-        textView.setText(text);
+        inflate(getContext(), R.layout.more_info_item,this);
+        TextView textViewInfo = findViewById(R.id.text_more_info_item);
+        textViewInfo.setText(text);
         
     }
 
