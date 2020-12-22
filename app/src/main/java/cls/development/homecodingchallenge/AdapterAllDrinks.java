@@ -63,7 +63,7 @@ public class AdapterAllDrinks extends RecyclerView.Adapter<RecyclerView.ViewHold
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
-        ImageView imageView;
+        de.hdodenhof.circleimageview.CircleImageView imageView;
         TextView textView;
         LinearLayout container;
 

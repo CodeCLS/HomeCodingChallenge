@@ -4,7 +4,7 @@
     android:id="@+id/item_container"
     android:layout_height="75dp">
 
-    <ImageView
+    <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/drink_item_image"
         android:layout_width="50dp"
         android:layout_height="50dp"

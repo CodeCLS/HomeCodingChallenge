@@ -23,7 +23,7 @@ import java.util.ArrayList;
 public class MoreInfoFragment extends Fragment implements DataCollected {
     private String id;
     private TextView name;
-    public ImageView image;
+    public de.hdodenhof.circleimageview.CircleImageView image;
     private TextView category;
     private TextView isAlcohol;
     private TextView instructions;
@@ -46,9 +46,6 @@ public class MoreInfoFragment extends Fragment implements DataCollected {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Transition transition = TransitionInflater.from(requireContext())
-                .inflateTransition(R.transition.shared_image);
-        setSharedElementEnterTransition(transition);
 
 
     }

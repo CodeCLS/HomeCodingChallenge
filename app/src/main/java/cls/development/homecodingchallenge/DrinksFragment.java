@@ -14,6 +14,8 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.transition.AutoTransition;
+import androidx.transition.Transition;
 
 import java.util.ArrayList;
 
@@ -50,6 +52,9 @@ public class DrinksFragment extends Fragment implements DataCollected,ItemClicke
     public void itemClicked(String id, ImageView imageView) {
         MoreInfoFragment moreInfoFragment = new MoreInfoFragment();
         moreInfoFragment.setId(id);
+        Transition transition = new ImageTransition();
+        moreInfoFragment.setSharedElementEnterTransition(transition);
+        moreInfoFragment.setSharedElementReturnTransition(transition);
         FragmentManager fragmentManager = getFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         ViewCompat.setTransitionName(imageView, "image_more_transition");
